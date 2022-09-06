@@ -121,6 +121,19 @@ SELECT Orders.OrderID, Employees.LastName, Employees.FirstName
     ORDER BY Orders.OrderID;
 
 
+SELECT City, Country FROM Customers
+WHERE Country='Germany'
+UNION
+SELECT City, Country FROM Suppliers
+WHERE Country='Germany'
+ORDER BY City;
+/*kayitlar tek halde doner, tekrarlananlari gormek istersen union all kullan*/
+
+
+SELECT Shippers.ShipperName, COUNT(Orders.OrderID) AS NumberOfOrders FROM Orders
+LEFT JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID
+GROUP BY ShipperName;
+
 select * from Customers where CustomerId between 90 and 100 order by CustomerId desc;
 
 select max(CustomerId) as a from Customers;
